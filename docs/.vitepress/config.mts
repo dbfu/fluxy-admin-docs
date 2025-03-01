@@ -19,18 +19,27 @@ export default defineConfig({
     nav: [
       { text: '项目指南', link: '/guide/quick-start', activeMatch: '/guide/' },
       { text: '项目实战教程', link: '/practical-tutorial/introduce', activeMatch: '/practical-tutorial/' },
+      // {
+      //   text: '项目预览',
+      //   items: [
+      //     { text: '基础项目', link: 'https://dev.fluxyadmin.cn/user/login', target: '_blank', },
+      //     { text: '实战项目', link: 'https://dev.fluxyadmin.cn/user/login', target: '_blank' }
+      //   ]
+      // },
       {
         text: '项目预览',
-        items: [
-          { text: '基础项目', link: 'https://dev.fluxyadmin.cn/user/login', target: '_blank', },
-          { text: '实战项目', link: 'https://dev.fluxyadmin.cn/user/login', target: '_blank' }
-        ]
+        link: 'https://dev.fluxyadmin.cn/user/login',
+        target: '_blank',
       },
       {
         text: '仓库地址', items: [
           { text: '前端仓库', link: '/https://github.com/dbfu/fluxy-admin-web', target: '_blank' },
           { text: '后端仓库', link: '/https://github.com/dbfu/fluxy-admin-server', target: '_blank' }
         ]
+      },
+      {
+        text: '联系作者',
+        link: '/author',
       }
     ],
 
@@ -144,5 +153,6 @@ var _hmt = _hmt || [];
 })();
       `,
     ]
-  ]
+  ],
+
 })
