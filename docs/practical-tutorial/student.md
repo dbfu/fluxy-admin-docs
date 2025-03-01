@@ -409,11 +409,9 @@ const columns: ProColumnType<API.StudentVO>[] = [
           <Popconfirm
             title={t("RCCSKHGu" /* 确认删除？ */)}
             onConfirm={async () => {
-              const [error] = await student_remove({ id });
-              if (!error) {
-                antdUtils.message?.success(t("CVAhpQHp" /* 删除成功! */));
-                actionRef.current?.reload();
-              }
+              await student_remove({ id });
+              antdUtils.message?.success(t("CVAhpQHp" /* 删除成功! */));
+              actionRef.current?.reload();
             }}
             placement="topRight"
           >

@@ -20,6 +20,16 @@
 
 角色分配管理员和学生角色，管理员可以进行专业管理、宿舍管理、学生管理、报修管理，学生可以进行报修。同时管理员角色还能够查看报表。
 
+## 项目演示
+
+使用管理员账号登录
+
+<video controls="controls" src="./demo1.webm" />
+
+使用学生账号登录，报修
+
+<video controls="controls" src="./demo2.webm" />
+
 ## 实战项目
 
 ### 项目准备
@@ -64,3 +74,9 @@ MAIL_PASS=
 ```
 
 环境变量添加完成后，然后就可以启动后端项目了。
+
+## 实战项目仓库地址
+
+前端：<https://github.com/dbfu/student-hostel-system-web>
+
+后端：<https://github.com/dbfu/student-hostel-system-server>

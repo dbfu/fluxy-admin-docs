@@ -218,11 +218,9 @@ node ./script/create-page my-repair
           <Popconfirm
             title={t("RCCSKHGu" /* 确认删除？ */)}
             onConfirm={async () => {
-              const [error] = await repair_remove({ id });
-              if (!error) {
-                antdUtils.message?.success(t("CVAhpQHp" /* 删除成功! */));
-                actionRef.current?.reload();
-              }
+              await repair_remove({ id });
+              antdUtils.message?.success(t("CVAhpQHp" /* 删除成功! */));
+              actionRef.current?.reload();
             }}
             placement="topRight"
           >
@@ -240,19 +238,19 @@ node ./script/create-page my-repair
 修改 new-edit-form.tsx 文件，修改表单配置
 
 ```tsx [src/pages/my-repair/new-edit-form.tsx]
-import { t } from '@/utils/i18n';
-import { Form, Input, Select } from 'antd';
-import { useEffect } from 'react';
+import {t} from '@/utils/i18n';
+import {Form, Input, Select} from 'antd';
+import {useEffect} from 'react';
 
-import { hostel_list } from '@/api/hostel';
-import { repair_create, repair_edit } from '@/api/repair';
+import {hostel_list} from '@/api/hostel';
+import {repair_create, repair_edit} from '@/api/repair';
 import FModalForm from '@/components/modal-form';
-import { useUserStore } from '@/stores/user';
-import { antdUtils } from '@/utils/antd';
-import { clearFormValues } from '@/utils/utils';
-import { useRequest, useUpdateEffect } from 'ahooks';
+import {useUserStore} from '@/stores/user';
+import {antdUtils} from '@/utils/antd';
+import {clearFormValues} from '@/utils/utils';
+import {useRequest, useUpdateEffect} from 'ahooks';
 import dayjs from 'dayjs';
-import { useShallow } from 'zustand/react/shallow';
+import {useShallow} from 'zustand/react/shallow';
 
 interface PropsType {
   open: boolean;
@@ -269,34 +267,43 @@ function NewAndEditRepairForm({
   onOpenChange,
   onSaveSuccess,
 }: PropsType) {
-
-  const { userName, userId } = useUserStore(useShallow(user => ({
-    userName: user.currentUser?.nickName,
-    userId: user.currentUser?.id,
-  })));
+  const {userName, userId} = useUserStore(
+    useShallow((user) => ({
+      userName: user.currentUser?.nickName,
+      userId: user.currentUser?.id,
+    }))
+  );
   const [form] = Form.useForm();
-  const { runAsync: updateUser, loading: updateLoading } = useRequest(repair_edit, {
-    manual: true,
-    onSuccess: () => {
-      antdUtils.message?.success(t("NfOSPWDa" /* 更新成功！ */));
-      onSaveSuccess();
-    },
-  });
-  const { runAsync: addUser, loading: createLoading } = useRequest(repair_create, {
-    manual: true,
-    onSuccess: () => {
-      antdUtils.message?.success(t("JANFdKFM" /* 创建成功！ */));
-      onSaveSuccess();
-    },
-  });
+  const {runAsync: updateUser, loading: updateLoading} = useRequest(
+    repair_edit,
+    {
+      manual: true,
+      onSuccess: () => {
+        antdUtils.message?.success(t('NfOSPWDa' /* 更新成功！ */));
+        onSaveSuccess();
+      },
+    }
+  );
+  const {runAsync: addUser, loading: createLoading} = useRequest(
+    repair_create,
+    {
+      manual: true,
+      onSuccess: () => {
+        antdUtils.message?.success(t('JANFdKFM' /* 创建成功！ */));
+        onSaveSuccess();
+      },
+    }
+  );
 
-  const { data: hostelList, run: getHostelList } = useRequest(hostel_list, { manual: true });
+  const {data: hostelList, run: getHostelList} = useRequest(hostel_list, {
+    manual: true,
+  });
 
   useUpdateEffect(() => {
     if (open) {
       getHostelList({});
     }
-  }, [open])
+  }, [open]);
 
   useEffect(() => {
     if (!editData) {
@@ -314,24 +321,22 @@ function NewAndEditRepairForm({
   }, [editData, open]);
 
   const finishHandle = async (values: any) => {
-
     values.repairId = userId;
 
     if (editData) {
       updateUser({
         ...editData,
         ...values,
-      })
+      });
     } else {
-      addUser(values)
+      addUser(values);
     }
-  }
-
+  };
 
   return (
     <FModalForm
-      labelCol={{ sm: { span: 24 }, md: { span: 5 } }}
-      wrapperCol={{ sm: { span: 24 }, md: { span: 16 } }}
+      labelCol={{sm: {span: 24}, md: {span: 5}}}
+      wrapperCol={{sm: {span: 24}, md: {span: 16}}}
       form={form}
       onFinish={finishHandle}
       open={open}
@@ -340,18 +345,20 @@ function NewAndEditRepairForm({
       loading={updateLoading || createLoading}
       onOpenChange={onOpenChange}
       layout='horizontal'
-      modalProps={{ forceRender: true }}
+      modalProps={{forceRender: true}}
     >
       <Form.Item
-        label="宿舍"
-        name="hostelId"
-        rules={[{
-          required: true,
-          message: t("iricpuxB" /* 不能为空 */),
-        }]}
+        label='宿舍'
+        name='hostelId'
+        rules={[
+          {
+            required: true,
+            message: t('iricpuxB' /* 不能为空 */),
+          },
+        ]}
       >
         <Select
-          options={hostelList?.map(item => ({
+          options={hostelList?.map((item) => ({
             label: `${item.building}#${item.number}`,
             value: item.id,
           }))}
@@ -362,29 +369,31 @@ function NewAndEditRepairForm({
         />
       </Form.Item>
       <Form.Item
-        label="报修人"
-        name="repairName"
-        rules={[{
-          required: true,
-          message: t("iricpuxB" /* 不能为空 */),
-        }]}
+        label='报修人'
+        name='repairName'
+        rules={[
+          {
+            required: true,
+            message: t('iricpuxB' /* 不能为空 */),
+          },
+        ]}
       >
         <Input readOnly />
       </Form.Item>
       <Form.Item
-        label="报修内容"
-        name="repairRemark"
-        rules={[{
-          required: true,
-          message: t("iricpuxB" /* 不能为空 */),
-        }]}
+        label='报修内容'
+        name='repairRemark'
+        rules={[
+          {
+            required: true,
+            message: t('iricpuxB' /* 不能为空 */),
+          },
+        ]}
       >
-        <Input.TextArea
-          rows={4}
-        />
+        <Input.TextArea rows={4} />
       </Form.Item>
     </FModalForm>
-  )
+  );
 }
 
 export default NewAndEditRepairForm;
