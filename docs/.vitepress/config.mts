@@ -28,8 +28,8 @@ export default defineConfig({
       },
       {
         text: '仓库地址', items: [
-          { text: '前端仓库', link: '/web' },
-          { text: '后端仓库', link: '/server' }
+          { text: '前端仓库', link: '/https://github.com/dbfu/fluxy-admin-web', target: '_blank' },
+          { text: '后端仓库', link: '/https://github.com/dbfu/fluxy-admin-server', target: '_blank' }
         ]
       }
     ],
