@@ -3,27 +3,45 @@
 layout: home
 
 hero:
-  name: "Fluxy Admin"
-  text: "Fluxy Admin"
-  tagline: My great project tagline
+  name: 'Fluxy Admin'
+  text: ''
+  tagline: 一套高颜值后台管理系统全栈框架
   image:
     src: /logo.svg
     alt: FluxyAdmin
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: 开发指南
       link: /markdown-examples
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 项目预览
+      link: https://dev.fluxyadmin.cn/
+      target: _blank
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 前端技术栈
+    icon: 🎯
+    details: Vite，React，Zustand，TypeScript，Ant Design，React Router，Tailwind Css，Axios，I18next
+
+  - title: 后端技术栈
+    icon: 🎁
+    details: Midway，Typeorm，Mysql，Redis，Minio，Swagger，Casbin
+
+  - title: RBAC权限管理
+    icon: 🔑
+    details: 支持用户、角色、菜单、按钮、接口权限
+
+  - title: 国际化
+    icon: 🌎
+    details: 通过配套的vscode插件可以做到一键翻译
+
+  - title: TypeScript
+    icon: 🎯
+    details: 严格类型检查，减少错误率
+
+  - title: 前后端对接非常简单
+    icon: 🚀
+    details: 借助openapi2ts库，快速根据后端swagger文档生成前端service
 ---
 
 <style>
