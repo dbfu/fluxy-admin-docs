@@ -138,7 +138,7 @@ export default defineConfig({
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?9c884a521baa8eedcc211e041d5475e6";
+  hm.src = "https://hm.baidu.com/hm.js?6ab801bce8964c31739c7a30b1d629da";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
