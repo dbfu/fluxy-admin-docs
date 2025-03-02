@@ -5,8 +5,8 @@ import {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "FluxyAdmin",
-  description: "后端管理系统全栈开发框架",
+  title: "fluxy-admin",
+  description: "高颜值后端管理系统全栈开发框架",
   markdown: {
     config(md) {
       // TODO: remove when https://github.com/vuejs/vitepress/issues/4431 is fixed
@@ -17,7 +17,7 @@ export default defineConfig({
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '项目指南', link: '/guide/quick-start', activeMatch: '/guide/' },
+      { text: '开发指南', link: '/guide/quick-start', activeMatch: '/guide/' },
       { text: '项目实战教程', link: '/practical-tutorial/introduce', activeMatch: '/practical-tutorial/' },
       // {
       //   text: '项目预览',

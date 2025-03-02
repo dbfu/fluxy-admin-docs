@@ -5,14 +5,14 @@ layout: home
 hero:
   name: 'Fluxy Admin'
   text: ''
-  tagline: 一套高颜值后台管理系统全栈框架
+  tagline: 一套高颜值后台管理系统全栈开发框架
   image:
     src: /logo.svg
     alt: FluxyAdmin
   actions:
     - theme: brand
       text: 开发指南
-      link: /markdown-examples
+      link: /guide/quick-start
     - theme: alt
       text: 项目预览
       link: https://dev.fluxyadmin.cn/
